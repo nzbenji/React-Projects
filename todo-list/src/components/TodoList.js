@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AddTodo from './AddTodo.js';
+import TodoItem from './TodoItem.js';
 
 class TodoList extends Component {
   state = {
@@ -20,11 +21,24 @@ class TodoList extends Component {
     console.log('todo added', option)
   }
 
+  handleRemoveTodo = (id) => {
+      console.log('remove', id)
+  }
+
   render() {
     return (
       <div className="App">
         <AddTodo />
         <AddTodo todoText="" handleAddTodo= { this.handleAddTodo } />
+        <ul>
+            { this.state.todos.map((item) => {
+                return  <TodoItem key = { item.id } 
+                item = { item } 
+                id = {item.id} 
+                handleRemoveTodo = { this.handleRemoveTodo }
+                />
+            })}
+        </ul>
       </div>
     );
   }
