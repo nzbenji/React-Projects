@@ -7,18 +7,22 @@ class TodoList extends Component {
     todos: [
       {
         id: 0,
-        todo: "make dinner"
-      },
-      {
-        id: 1,
-        todo: "wash dishes"
+        todo: "Static data"
       }
     ],
-    selectedTodo: undefined
+    nextId: 1
   }
 
   handleAddTodo = (option) => {
-    console.log('todo added', option)
+      if(!option){
+          return 'Enter a value to add a todo item'
+      }
+    let todos = this.state.todos.concat()
+    console.log(this.state.todos)
+    todos.push( { id: this.state.nextId, todo: option } )
+    this.setState({
+        todos: todos
+    })
   }
 
   handleRemoveTodo = (id) => {
