@@ -14,10 +14,10 @@ class TodoList extends Component {
   };
 
   handleAddTodo = option => {
-    if (!option) {
-      return "Enter a value to add a todo item";
-    }
     let todos = [...this.state.todos];
+    if (!option) {
+      return "Enter a value to add a todo item";  
+    }
     console.log(this.state.todos);
 
     todos.push({ id: this.state.nextId, todo: option });
@@ -28,11 +28,12 @@ class TodoList extends Component {
   };
 
   handleRemoveTodo = itemToRemove => {
-    this.setState({
-        todos: this.state.todos.filter(item => {
+    this.setState((prevState) => ({
+        //Only objects which do not match criteria will be returned back as a new array
+        todos: prevState.todos.filter(item => {
             return item.id !== itemToRemove
         })
-    })
+    }))
   };
 
   render() {
