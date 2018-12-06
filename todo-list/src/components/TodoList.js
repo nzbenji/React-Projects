@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import AddTodo from './AddTodo.js';
-import TodoItem from './TodoItem.js';
+import React, { Component } from "react";
+import AddTodo from "./AddTodo.js";
+import TodoItem from "./TodoItem.js";
 
 class TodoList extends Component {
   state = {
@@ -11,37 +11,46 @@ class TodoList extends Component {
       }
     ],
     nextId: 1
-  }
+  };
 
-  handleAddTodo = (option) => {
-      if(!option){
-          return 'Enter a value to add a todo item'
-      }
-    let todos = this.state.todos.concat()
-    console.log(this.state.todos)
-    todos.push( { id: this.state.nextId, todo: option } )
+  handleAddTodo = option => {
+    if (!option) {
+      return "Enter a value to add a todo item";
+    }
+    let todos = [...this.state.todos];
+    console.log(this.state.todos);
+
+    todos.push({ id: this.state.nextId, todo: option });
     this.setState({
-        todos: todos
-    })
-  }
+      todos: todos,
+      id: ++this.state.nextId
+    });
+  };
 
-  handleRemoveTodo = (id) => {
-      console.log('remove', id)
-  }
+  handleRemoveTodo = itemToRemove => {
+    this.setState({
+        todos: this.state.todos.filter(item => {
+            return item.id !== itemToRemove
+        })
+    })
+  };
 
   render() {
     return (
       <div className="App">
         <AddTodo />
-        <AddTodo todoText="" handleAddTodo= { this.handleAddTodo } />
+        <AddTodo todoText="" handleAddTodo={this.handleAddTodo} />
         <ul>
-            { this.state.todos.map((item) => {
-                return  <TodoItem key = { item.id } 
-                item = { item } 
-                id = {item.id} 
-                handleRemoveTodo = { this.handleRemoveTodo }
-                />
-            })}
+          {this.state.todos.map(item => {
+            return (
+              <TodoItem
+                key={item.id}
+                item={item}
+                id={item.id}
+                handleRemoveTodo={this.handleRemoveTodo}
+              />
+            );
+          })}
         </ul>
       </div>
     );
