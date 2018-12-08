@@ -23,7 +23,7 @@ class TodoList extends Component {
     todos.push({ id: this.state.nextId, todo: option });
     this.setState({
       todos: todos,
-      id: ++this.state.nextId
+      id: this.state.nextId + 1
     });
   };
 
