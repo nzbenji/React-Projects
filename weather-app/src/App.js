@@ -6,7 +6,8 @@ import Weather from "./components/Weather";
 class App extends Component {
 
   state = {
-    temp: "",
+    tempMin: "",
+    tempMax: "",
     city: "", 
     country: "",
     conditions: undefined,
@@ -23,7 +24,7 @@ class App extends Component {
 
     const API_KEY = "134bdee599fe71b8287e371b7a78e356";
     const ENDPOINT_URL = "http://api.openweathermap.org";
-    const API_CALL = `${ENDPOINT_URL}/data/2.5/weather?q=${city},${country}&appid=${API_KEY}`
+    const API_CALL = `${ENDPOINT_URL}/data/2.5/weather?q=${city},${country}&units=metric&appid=${API_KEY}`
 
     fetch(API_CALL)
       .then(res => {
@@ -33,7 +34,8 @@ class App extends Component {
         console.log(data)
         if(city && country) {
         this.setState({
-          temp: data.main.temp,
+          tempMin: data.main.temp_min + "c",
+          tempMax: data.main.temp_max + "c",
           city: data.name,
           country: data.sys.country,
           conditions: data.weather[0].icon,
@@ -57,7 +59,8 @@ class App extends Component {
         {/* Nothing should be returned until data is returned from fetching */}
         { this.state.loading ? '' 
           : <Weather 
-          temp = { this.state.temp }
+          tempMin = { this.state.tempMin }
+          tempMax = { this.state.tempMax }
           city = { this.state.city }
           country = { this.state.country }
           conditions = { this.state.conditions }

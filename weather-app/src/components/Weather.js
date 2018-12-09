@@ -7,10 +7,14 @@ const Weather = props => {
                 Location: { props.city }, { props.country }
                 </p>
             }
-            { props.temp && <p>
-                    Temperature: { props.temp }
+            { props.tempMin && <p>
+                    Low: { props.tempMin }
                 </p>
             }
+            { props.tempMin && <p>
+                High: { props.tempMax }
+            </p>
+        }
             { props.conditions && <p>
                     Conditions: { props.conditions }
                 </p>}
