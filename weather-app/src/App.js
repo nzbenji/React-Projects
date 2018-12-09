@@ -10,7 +10,8 @@ class App extends Component {
     tempMax: "",
     city: "", 
     country: "",
-    conditions: undefined,
+    conditions: "",
+    icon: undefined,
     loading: true,
     error: undefined
   }
@@ -38,7 +39,8 @@ class App extends Component {
           tempMax: data.main.temp_max + "c",
           city: data.name,
           country: data.sys.country,
-          conditions: data.weather[0].icon,
+          conditions: data.weather[0].description,
+          icon: data.weather[0].icon,
           //without loading, we get an error as props.conditions is trying to load the image before the api returns the data
           loading: false,
           error: ''
@@ -53,7 +55,7 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
+      <div >
         <Form weather={this.getWeather} />
 
         {/* Nothing should be returned until data is returned from fetching */}
@@ -64,6 +66,7 @@ class App extends Component {
           city = { this.state.city }
           country = { this.state.country }
           conditions = { this.state.conditions }
+          icon = { this.state.icon }
           error = { this.state.error }
         />
     }

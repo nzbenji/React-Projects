@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.container {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+}
+.weather {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    left: 23%;
+    display: inline-block;
+  }
+
+
+.icon {
+    position: absolute;
+
+    top: 18%;
+    left: 40%;
+    height: 5rem;
+}
+.conditions {
+    top: 19%;
+    left: 48%;
+}
