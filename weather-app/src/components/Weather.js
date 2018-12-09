@@ -19,6 +19,7 @@ const Weather = props => {
                     { props.error }
                 </p>
             }
+            <img className="icon" src={`http://openweathermap.org/img/w/${props.conditions}${'.png'}`}/>
         </div>
     )
 }
