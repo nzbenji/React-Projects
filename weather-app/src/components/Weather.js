@@ -3,7 +3,7 @@ import '../css/Weather.css';
 
 const Weather = props => {
     return (
-        <div className="container">
+        <div>
         <img className="icon" src={`http://openweathermap.org/img/w/${props.icon}${'.png'}`}/>
         { props.conditions && <p className="icon conditions">
                 {props.conditions}</p>}

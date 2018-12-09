@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-.container {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.2rem;
-}
+
 .weather {
     position: absolute;
     width: 100%;
-    top: 30%;
+    top: 20%;
     left: 23%;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
     display: inline-block;
   }
 
@@ -16,11 +15,13 @@
 .icon {
     position: absolute;
 
-    top: 18%;
+    top: 15%;
     left: 40%;
     height: 5rem;
 }
 .conditions {
-    top: 19%;
+    top: 16%;
     left: 48%;
+    font-family: 'Montserrat', sans-serif;
+    
 }
