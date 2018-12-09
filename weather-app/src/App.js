@@ -6,15 +6,17 @@ import Weather from "./components/Weather";
 class App extends Component {
 
   state = {
-    temp: undefined,
-    city: undefined, 
-    country: undefined,
+    temp: "",
+    city: "", 
+    country: "",
+    conditions: "",
     error: undefined
   }
 
   getWeather = (e) => {
     const city = e.target.elements.city.value
     const country = e.target.elements.country.value
+    //Data will not display without this
     e.preventDefault()
 
     const API_KEY = "134bdee599fe71b8287e371b7a78e356";
@@ -27,13 +29,21 @@ class App extends Component {
       })
       .then(data => {
         console.log(data)
+        if(city && country) {
         this.setState({
           temp: data.main.temp,
           city: data.name,
           country: data.sys.country,
+          conditions: data.weather[0].description,
           error: ''
         })
+      } else { //Catch an error so we app doesn't crash if no value is entered
+        this.setState({
+          error: "Please enter required values"
+        })
+      }
       })
+
   };
   render() {
     return (
@@ -43,6 +53,7 @@ class App extends Component {
           temp = { this.state.temp }
           city = { this.state.city }
           country = { this.state.country }
+          conditions = { this.state.conditions }
           error = { this.state.error }
         />
       </div>
